@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat on Click</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('https://www.w3schools.com/w3images/grass.jpg'); /* Grass background */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        img {
+            position: absolute;
+            transition: transform 0.3s ease;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.body.addEventListener("click", function(e) {
+            const cat = document.createElement("img");
+            cat.src = "https://cataas.com/cat"; // Reliable cat image URL
+            cat.style.left = `${e.clientX - 100}px`; // Adjust position based on mouse click
+            cat.style.top = `${e.clientY - 100}px`; // Adjust position based on mouse click
+            cat.style.transform = "scale(0)";
+            document.body.appendChild(cat);
+
+            // Animate the cat appearing
+            setTimeout(() => {
+                cat.style.transform = "scale(1)";
+            }, 10);
+            
+            // Remove cat after 3 seconds
+            setTimeout(() => {
+                cat.remove();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
